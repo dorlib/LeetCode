@@ -13,3 +13,23 @@ int missingNumber(int* nums, int numsSize){
     }
     return 0;
 }
+
+
+// faster solution
+
+int missingNumber(int *nums, int numsSize) {
+    int total = 0;
+    int n = 0;
+    for (int i = 0; i < numsSize; i++) {
+        total += nums[i];
+        if (nums[i] > n) {
+            n = nums[i];
+        }
+    }
+        
+    if (n < numsSize) {
+        return numsSize;
+    }
+    
+    return ((n*(n+1))/2) - total;
+}
